@@ -1,5 +1,3 @@
-import 'dotenv/config';
-
 import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
@@ -9,6 +7,10 @@ import routes from './routes';
 // Uncomment this line to enable database access
 // --------
 import './database';
+
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
 
 class App {
   constructor() {
